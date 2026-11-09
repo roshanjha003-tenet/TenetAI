@@ -1,0 +1,29 @@
+{
+  "findings": [
+    {
+      "decision": "D-014",
+      "constraint": "one idempotency key per payment, reused on every attempt",
+      "file": "payments/retry.py",
+      "start_line": 33,
+      "end_line": 34,
+      "explanation": "Each retry generates a new idempotency key (payment id + uuid4), so the processor can't deduplicate attempts and may charge the customer twice."
+    },
+    {
+      "decision": "D-014",
+      "constraint": "every retry is logged to the audit trail",
+      "file": "payments/retry.py",
+      "start_line": 15,
+      "end_line": 16,
+      "explanation": "Retries are not logged."
+    },
+    {
+      "decision": "D-014",
+      "constraint": "at most 3 automatic attempts within 24 hours",
+      "file": "payments/retry.py",
+      "start_line": 88,
+      "end_line": 90,
+      "explanation": "The retry loop has no upper bound."
+    }
+  ],
+  "confident": true
+}

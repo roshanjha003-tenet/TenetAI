@@ -1,0 +1,12 @@
+{
+  "title": "Enable bounded automatic retries for transient payment failures",
+  "statement": "Transient payment failures are retried automatically, within strict bounds; everything else stays on the manual recovery path.",
+  "constraints": [
+    "at most 3 automatic attempts within 24 hours",
+    "one idempotency key per payment, reused on every attempt",
+    "hard declines are never retried; they stay on the manual recovery path",
+    "retries stay behind the checkout rollout flag"
+  ],
+  "parents": ["D-013", "D-099"],
+  "area": "technical-safety"
+}

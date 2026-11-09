@@ -1,0 +1,9 @@
+{
+  "verdicts": [
+    {
+      "finding": 0,
+      "confirmed": true,
+      "reason": "Line 33 builds attempt_key from uuid4() on every call and line 34 sends it instead of payment.idempotency_key."
+    }
+  ]
+}
