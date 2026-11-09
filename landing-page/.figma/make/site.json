@@ -1,10 +1,5 @@
 {
-  "title": "Tenet: Shared AI memory and decision records for teams",
-  "description": "Shared AI memory and decision records for teams, so work converges in fewer iterations.",
-  "language": "en",
-  "icons": {
-    "icon": "/favicon.svg"
-  },
+  "description": "Explore Tenet’s product walkthrough and learn how cross-functional teams privately reason with AI, share insights, challenge ideas, and preserve decision history.",
   "robots": {
     "index": false
   },
