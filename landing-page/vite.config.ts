@@ -216,7 +216,7 @@ function figmaSiteConfiguration(config: FigmaSiteConfiguration): Plugin {
     z-index: 2147483647;
     transform: translateY(-150%);
     border-radius: 6px;
-    background: #111827;
+    background: #121a16;
     color: #fff;
     padding: 8px 12px;
     font: 600 14px/1.2 system-ui, sans-serif;
@@ -457,7 +457,7 @@ function figmaLinkedPackageSourcemaps(): Plugin {
         const mapFile = path.resolve(path.dirname(file), url);
         return { map: JSON.parse(fs.readFileSync(mapFile, "utf8")), mapDir: path.dirname(mapFile) };
       }
-    } catch {}
+    } catch { }
     // Without a usable input map, map every line to itself.
     const mappings = code.split("\n").map((_, i) => (i ? "AACA" : "AAAA"));
     const map = {

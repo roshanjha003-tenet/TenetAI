@@ -103,7 +103,7 @@ function Logo({ light = false }: { light?: boolean }) {
   return (
     <a className={`logo ${light ? "logo-light" : ""}`} href="#top" aria-label="Tenet home">
       <svg viewBox="0 0 38 38" aria-hidden="true">
-        <rect width="38" height="38" rx="10" fill="#3430C9" />
+        <rect width="38" height="38" rx="10" fill="var(--green)" />
         <path d="M11 12h16M19 12v16" stroke="white" strokeWidth="2.25" strokeLinecap="round" />
         <circle cx="11" cy="12" r="2" fill="white" />
         <circle cx="27" cy="12" r="2" fill="white" />
@@ -206,10 +206,10 @@ function HeroMockup() {
           <Contribution initials="MS" name="Meera" tag="PUSH BACK" tone="ember">
             The 30-day churn assumption looks optimistic for new cohorts.
           </Contribution>
-          <Contribution initials="KR" name="Kabir" tag="FORECAST" tone="sky">
+          <Contribution initials="KR" name="Kabir" tag="FORECAST" tone="ochre">
             A Rs 699 starter bundle could retain 12–15% more customers.
           </Contribution>
-          <Contribution initials="AN" name="Ananya" tag="AGREE" tone="moss">
+          <Contribution initials="AN" name="Ananya" tag="AGREE" tone="leaf">
             Agree. The bundle gives Growth a clearer value story to test.
           </Contribution>
         </div>
@@ -231,7 +231,7 @@ function Contribution({
   initials,
   name,
   tag,
-  tone = "indigo",
+  tone = "green",
   children,
 }: {
   initials: string;
@@ -432,7 +432,7 @@ const cases = [
     keeps: "Research, positioning alternatives, channel forecasts and why the team chose its plan.",
     role: "Growth",
     tag: "FORECAST",
-    tone: "sky",
+    tone: "ochre",
   },
   {
     title: "Vendor or tool selection",
@@ -448,7 +448,7 @@ const cases = [
     keeps: "Competing priorities, business cases, forecasts and allocation reasoning.",
     role: "Finance",
     tag: "FORECAST",
-    tone: "sky",
+    tone: "ochre",
   },
   {
     title: "Post-mortems and retros",
@@ -456,7 +456,7 @@ const cases = [
     keeps: "Individual perspectives, evidence, disagreements and agreed follow-through.",
     role: "Product",
     tag: "AGREE",
-    tone: "moss",
+    tone: "leaf",
   },
 ];
 
@@ -856,7 +856,7 @@ function App() {
             <Reveal className="hero-copy">
               <Eyebrow>SHARED REASONING FOR TEAMS</Eyebrow>
               <h1>
-                Think privately with AI. <em>Decide together.</em>
+                Think privately with AI.<br /><em>Decide together.</em>
               </h1>
               <p className="hero-sub">
                 Tenet is a collaboration workspace where teammates explore problems with AI in
@@ -1127,24 +1127,8 @@ function App() {
             </Reveal>
             <Reveal className="pricing-card">
               <span className="planned-badge">PLANNED PRICING</span>
-              <div className="price-toggle" role="group" aria-label="Pricing region">
-                <button
-                  className={!international ? "active" : ""}
-                  aria-pressed={!international}
-                  onClick={() => setInternational(false)}
-                >
-                  India
-                </button>
-                <button
-                  className={international ? "active" : ""}
-                  aria-pressed={international}
-                  onClick={() => setInternational(true)}
-                >
-                  International
-                </button>
-              </div>
               <div className="price">
-                <span>{international ? "$15" : "Rs 999"}</span>
+                <span>$10</span>
                 <small>/ user / month</small>
               </div>
               <div className="price-divider" />
@@ -1171,7 +1155,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section team-section">
+        {/* <section className="section team-section">
           <div className="container">
             <Reveal className="section-heading">
               <Eyebrow>THE FOUNDERS</Eyebrow>
@@ -1212,7 +1196,7 @@ function App() {
               </Reveal>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="section faq-section" id="faq">
           <div className="container faq-layout">
@@ -1231,7 +1215,6 @@ function App() {
         </section>
 
         <section className="section join-section" id="join">
-          <div className="join-glow" aria-hidden="true" />
           <div className="container join-layout">
             <Reveal className="join-copy">
               <Eyebrow light>PRIVATE BETA</Eyebrow>
