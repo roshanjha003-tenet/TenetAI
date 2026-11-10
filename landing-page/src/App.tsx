@@ -456,12 +456,99 @@ export function Demo() {
           <Reveal>
             <div className="video-card">
               <Eyebrow dark>Recorded walkthrough</Eyebrow>
-              <button className="play" aria-label="Play Tenet walkthrough">
+              <button
+                type="button"
+                className="play"
+                aria-label="Play Tenet walkthrough"
+                onClick={(event) => {
+                  const card = event.currentTarget.closest(".video-card");
+                  const player = card?.querySelector<HTMLDivElement>("[data-loom-player]");
+                  const frame = player?.querySelector<HTMLIFrameElement>("iframe");
+                  if (!player || !frame) return;
+                  frame.src = frame.dataset.src ?? "";
+                  player.hidden = false;
+                }}
+              >
                 <span>▶</span>
               </button>
               <h3>Watch Tenet in action</h3>
-              <a target="_blank" href="https://www.loom.com/share/87aac049b9ee48528cec39023c15fd9e">Open Loom video ↗</a>
+              <a target="_blank" href="https://www.loom.com/share/87aac049b9ee48528cec39023c15fd9e">
+                Open Loom video ↗
+              </a>
               <p>Figma prototype + partially working MVP.</p>
+              <div
+                hidden
+                data-loom-player
+                aria-label="Tenet recorded walkthrough"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  zIndex: 10,
+                  padding: 12,
+                  background: "var(--ink)",
+                }}
+              >
+                <div
+                  style={{
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 10,
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "2px 4px",
+                    }}
+                  >
+                    <span className="ui-label" style={{ marginBottom: 0 }}>
+                      Recorded walkthrough
+                    </span>
+                    <button
+                      type="button"
+                      className="button outline"
+                      style={{ minHeight: 36, padding: "0 14px" }}
+                      onClick={(event) => {
+                        const player =
+                          event.currentTarget.closest<HTMLDivElement>("[data-loom-player]");
+                        const frame = player?.querySelector<HTMLIFrameElement>("iframe");
+                        if (frame) frame.src = "about:blank";
+                        if (player) player.hidden = true;
+                      }}
+                    >
+                      Close
+                    </button>
+                  </div>
+                  <div
+                    style={{
+                      position: "relative",
+                      flex: 1,
+                      minHeight: 0,
+                      overflow: "hidden",
+                      borderRadius: 6,
+                      background: "#06151c",
+                    }}
+                  >
+                    <iframe
+                      title="Tenet recorded walkthrough"
+                      data-src="https://www.loom.com/embed/87aac049b9ee48528cec39023c15fd9e?autoplay=1"
+                      src="about:blank"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        border: 0,
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </Reveal>
           <Reveal>
@@ -489,7 +576,15 @@ export function Positioning() {
           <div className="vertical-scroll">
             <h3 className="column-title">Where adjacent tools start</h3>
             {content.positioning.map((x, i) => (
-              <PaperCard key={x[0]} color={colors[i + 1]}>
+              <PaperCard
+                key={x[0]}
+                color={colors[i + 1]}
+                className={
+                  i === 1
+                    ? "min-w-0 max-w-full self-start overflow-hidden [height:auto!important] [overflow-wrap:anywhere]"
+                    : ""
+                }
+              >
                 <h3>{x[0]}</h3>
                 <p>{x[1]}</p>
               </PaperCard>
