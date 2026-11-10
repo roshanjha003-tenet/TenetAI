@@ -1,0 +1,1703 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Urbanist:wght@600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+    --ink: #0a1e28;
+    --ink-2: #0f2b36;
+    --cream: #f5f0e6;
+    --paper: #faf9f4;
+    --coral: #de5569;
+    --sun: #f2cf4b;
+    --teal: #1a9a96;
+    --plum: #6a3f7b;
+    --ember: #ec7a39;
+    --muted: #5b6b72;
+    --muted-dark: #9db0b8;
+}
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "Lato", sans-serif;
+        font-size: 17px;
+        line-height: 1.6;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    .logo,
+    .button {
+        font-family: "Urbanist", sans-serif;
+    }
+    h1,
+    h2,
+    h3 {
+        letter-spacing: -0.02em;
+    }
+    button,
+    a {
+        transition:
+            color 0.2s,
+            background 0.2s,
+            transform 0.2s,
+            border-color 0.2s;
+    }
+    :focus-visible {
+        outline: 3px solid var(--coral);
+        outline-offset: 4px;
+    }
+    .dark-section :focus-visible {
+        outline-color: var(--sun);
+    }
+}
+* {
+    box-sizing: border-box;
+}
+.container {
+    width: min(1200px, calc(100% - 48px));
+    margin-inline: auto;
+}
+.narrow {
+    max-width: 900px;
+}
+.section {
+    padding: 120px 0;
+}
+.cream {
+    background: var(--cream);
+}
+.dark-section {
+    background: var(--ink);
+    color: var(--cream);
+}
+.section-header {
+    position: relative;
+    max-width: 930px;
+    margin-bottom: 56px;
+}
+.section-header h2 {
+    font-size: clamp(40px, 5vw, 66px);
+    line-height: 1.03;
+    font-weight: 700;
+    margin: 16px 0;
+}
+.section-header > p {
+    font-size: 20px;
+    max-width: 780px;
+    color: var(--muted);
+}
+.dark-section .section-header > p {
+    color: var(--muted-dark);
+}
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font: 700 12px "Urbanist";
+    color: var(--muted);
+}
+.eyebrow i {
+    width: 9px;
+    height: 9px;
+    background: var(--coral);
+}
+.eyebrow.on-dark {
+    color: var(--sun);
+}
+.corner-blocks {
+    position: absolute;
+    right: 0;
+    top: 2px;
+    display: grid;
+    grid-template-columns: repeat(2, 15px);
+    gap: 3px;
+}
+.corner-blocks i {
+    height: 15px;
+    background: var(--coral);
+}
+.corner-blocks i:nth-child(2) {
+    background: var(--sun);
+}
+.corner-blocks i:nth-child(3) {
+    background: var(--teal);
+    grid-column: 2;
+}
+.nav {
+    height: 72px;
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 50;
+    background: rgba(10, 30, 40, 0.88);
+    backdrop-filter: blur(14px);
+    color: var(--cream);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.nav-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 25px;
+    font-weight: 700;
+    text-decoration: none;
+}
+.logo-mark {
+    display: grid;
+    grid-template-columns: repeat(2, 8px);
+    gap: 2px;
+}
+.logo-mark i {
+    height: 8px;
+    background: var(--coral);
+}
+.logo-mark i:nth-child(2) {
+    background: var(--sun);
+}
+.logo-mark i:nth-child(3) {
+    background: var(--teal);
+}
+.logo-mark i:nth-child(4) {
+    background: var(--plum);
+}
+.nav-links {
+    display: flex;
+    gap: 28px;
+    margin: auto;
+}
+.nav a {
+    color: inherit;
+    text-decoration: none;
+}
+.nav-links a {
+    font-size: 14px;
+    color: #cad5d9;
+}
+.nav-links a:hover {
+    color: #fff;
+}
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    padding: 0 22px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+.button:hover {
+    transform: translateY(-2px);
+}
+.button.primary {
+    background: var(--coral);
+    color: var(--ink);
+}
+.button.primary:hover {
+    background: #c9455b;
+}
+.button.outline {
+    border-color: #8ca0a8;
+    color: var(--cream);
+}
+.button.outline:hover {
+    border-color: var(--cream);
+}
+.menu-button,
+.mobile-menu {
+    display: none;
+}
+.hero {
+    padding: 180px 0 120px;
+    min-height: 820px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    border: 1px solid #3a525c;
+    border-radius: 99px;
+    color: #d3dce0;
+    font: 700 11px "Urbanist";
+    letter-spacing: 0.12em;
+}
+.pill i {
+    width: 8px;
+    height: 8px;
+    background: var(--sun);
+}
+.hero h1 {
+    font-size: clamp(56px, 6.7vw, 96px);
+    line-height: 0.94;
+    font-weight: 700;
+    margin: 28px 0;
+}
+.hero-sub {
+    font-size: 21px;
+    line-height: 1.55;
+    color: #c0cdd2;
+    max-width: 650px;
+}
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    margin-top: 34px;
+}
+.fineprint {
+    font-size: 14px;
+    color: var(--muted-dark);
+    margin-top: 15px;
+}
+.hero-visual {
+    position: relative;
+    z-index: 2;
+}
+.ui-label {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font: 700 10px "Urbanist";
+    color: var(--sun);
+    margin-bottom: 10px;
+}
+.dark-label {
+    color: var(--muted);
+}
+.decision-card {
+    background: var(--paper);
+    color: var(--ink);
+    border-radius: 8px;
+    padding: 26px;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.28);
+    position: relative;
+    z-index: 2;
+}
+.record-top {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font: 700 12px "Urbanist";
+    letter-spacing: 0.12em;
+}
+.decision-card h3 {
+    font-size: 26px;
+    line-height: 1.15;
+    margin: 14px 0 20px;
+}
+.chip {
+    border-radius: 99px;
+    padding: 5px 9px;
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+}
+.teal {
+    background: var(--teal);
+}
+.challenges {
+    display: grid;
+    gap: 10px;
+}
+.challenges > div,
+.memory-item {
+    background: #eeeae0;
+    border-left: 3px solid var(--sun);
+    padding: 11px 13px;
+    border-radius: 3px;
+}
+.challenges > div:nth-child(2) {
+    border-color: var(--plum);
+}
+.challenges b,
+.memory-item b {
+    font-size: 12px;
+}
+.challenges p,
+.memory-item p {
+    font-size: 13px;
+    line-height: 1.45;
+    margin: 2px 0;
+}
+.challenges em {
+    font-style: normal;
+    font-size: 11px;
+    color: var(--teal);
+    font-weight: 700;
+}
+.people {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 14px;
+    margin: 16px 0;
+    font-size: 12px;
+    font-weight: 700;
+}
+.people small {
+    display: block;
+    color: var(--muted);
+    font-weight: 400;
+}
+.drift {
+    background: #fee9ec;
+    border: 1px solid #f3aeba;
+    border-radius: 5px;
+    padding: 10px 12px;
+    color: #7d1d2c;
+}
+.drift b,
+.drift span {
+    display: block;
+    font-size: 11px;
+    line-height: 1.4;
+}
+.toggle-row {
+    display: flex;
+    gap: 5px;
+}
+.toggle-row span {
+    font-size: 10px;
+    border: 1px solid #c8c3b8;
+    padding: 3px 7px;
+    border-radius: 4px;
+}
+.toggle-row .active {
+    background: var(--ink);
+    color: #fff;
+}
+.fall {
+    position: absolute;
+    z-index: 1;
+}
+.fall.one {
+    right: -52px;
+    top: -110px;
+}
+.fall.two {
+    left: -64px;
+    bottom: -150px;
+}
+.fall-guide {
+    height: 180px;
+    width: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+.fall-guide > span {
+    height: 120px;
+    border-left: 2px dotted rgba(255, 255, 255, 0.3);
+    position: relative;
+}
+.fall-guide > span:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 7px;
+    height: 7px;
+    border-right: 2px solid #82969e;
+    border-bottom: 2px solid #82969e;
+    transform: rotate(45deg);
+}
+.block-piece {
+    display: grid;
+    grid-template: repeat(3, var(--cell)) / repeat(3, var(--cell));
+    gap: 2px;
+    width: calc(var(--cell) * 3 + 4px);
+    height: calc(var(--cell) * 3 + 4px);
+}
+.block-piece i {
+    border-radius: 2px;
+}
+.block-s {
+    --cell: 10px;
+}
+.block-m {
+    --cell: 17px;
+}
+.block-l {
+    --cell: 24px;
+}
+.bg-coral {
+    background: var(--coral) !important;
+}
+.bg-sun {
+    background: var(--sun) !important;
+}
+.bg-teal {
+    background: var(--teal) !important;
+}
+.bg-plum {
+    background: var(--plum) !important;
+}
+.bg-ember {
+    background: var(--ember) !important;
+}
+.skyline {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    height: 120px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    opacity: 0.9;
+}
+.fall-in {
+    animation: lock 0.8s cubic-bezier(0.16, 1.55, 0.58, 1) both;
+}
+.fall-in:nth-child(3n) {
+    animation-delay: 0.12s;
+}
+.fall-in:nth-child(3n + 1) {
+    animation-delay: 0.24s;
+}
+.fall-in:nth-child(3n + 2) {
+    animation-delay: 0.36s;
+}
+@keyframes lock {
+    from {
+        transform: translateY(-150px);
+        opacity: 0;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+.three-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+.paper-card {
+    height: 100%;
+    background: var(--paper);
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 20px 45px rgba(41, 53, 55, 0.08);
+    position: relative;
+    border-top: 1px solid #e5dfd4;
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+.paper-card:before,
+.market-card:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 28px;
+    width: 72px;
+    height: 6px;
+    background: var(--coral);
+    border-radius: 0 0 3px 3px;
+}
+.top-sun:before {
+    background: var(--sun);
+}
+.top-teal:before {
+    background: var(--teal);
+}
+.top-plum:before {
+    background: var(--plum);
+}
+.top-ember:before {
+    background: var(--ember);
+}
+.top-coral:before {
+    background: var(--coral);
+}
+.paper-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 28px 54px rgba(41, 53, 55, 0.13);
+}
+.paper-card h3 {
+    font-size: 24px;
+    line-height: 1.15;
+    margin: 14px 0 12px;
+}
+.paper-card p {
+    color: var(--muted);
+}
+.card-number {
+    font: 700 12px "Urbanist";
+    color: var(--muted);
+}
+.card-dark {
+    background: var(--ink-2);
+    border-color: #27424d;
+    color: var(--cream);
+    box-shadow: none;
+}
+.card-dark p {
+    color: var(--muted-dark);
+}
+.icon-square {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    background: var(--coral);
+    color: #fff;
+    font: 700 12px "Urbanist";
+}
+blockquote {
+    margin: 56px 0 0;
+    padding: 16px 0 16px 28px;
+    border-left: 6px solid var(--coral);
+    max-width: 1000px;
+}
+blockquote p {
+    font: 600 clamp(21px, 2.2vw, 29px)/1.45 "Urbanist";
+    margin: 0;
+}
+blockquote cite {
+    display: block;
+    color: var(--muted);
+    font-style: normal;
+    margin-top: 16px;
+}
+.insight {
+    position: relative;
+    overflow: hidden;
+    background: var(--coral);
+    color: var(--cream);
+    padding: 90px 0;
+}
+.insight .container {
+    position: relative;
+    z-index: 1;
+}
+.insight h2 {
+    font-size: clamp(52px, 7vw, 92px);
+    line-height: 0.96;
+    max-width: 1050px;
+    font-weight: 700;
+}
+.insight p {
+    font-size: 20px;
+    max-width: 780px;
+    margin-top: 25px;
+}
+.insight > .block-piece {
+    position: absolute;
+}
+.insight > .block-piece:first-child {
+    right: 4%;
+    top: 15px;
+}
+.insight > .block-piece:last-child {
+    left: 2%;
+    bottom: -30px;
+}
+.stepper-layout {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 65px;
+    align-items: start;
+}
+.steps {
+    display: grid;
+}
+.steps button {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 17px;
+    background: transparent;
+    color: var(--cream);
+    border: 0;
+    border-bottom: 1px dashed #38505a;
+    text-align: left;
+    padding: 19px 0;
+    cursor: pointer;
+}
+.steps button small,
+.steps button b {
+    display: block;
+}
+.steps button b {
+    font: 700 22px "Urbanist";
+}
+.steps button small {
+    color: var(--muted-dark);
+    line-height: 1.4;
+    margin-top: 4px;
+}
+.step-block {
+    display: grid;
+    place-items: center;
+    height: 48px;
+    border-radius: 4px;
+    color: #fff;
+    font: 700 12px "Urbanist";
+}
+.steps button.active {
+    transform: translateX(8px);
+}
+.steps button.active b {
+    color: var(--sun);
+}
+.step-panel .decision-card {
+    min-height: 520px;
+}
+.panel-note {
+    font-size: 13px;
+    color: var(--muted-dark);
+    margin-top: 14px;
+}
+.demo-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 26px;
+    align-items: center;
+}
+.video-card {
+    min-height: 510px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--cream);
+    padding: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.video-card:after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 40px solid var(--plum);
+    right: -60px;
+    bottom: -60px;
+    transform: rotate(15deg);
+}
+.play {
+    width: 72px;
+    height: 72px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--coral);
+    color: #fff;
+    margin: 50px 0 25px;
+    cursor: pointer;
+}
+.play:hover {
+    transform: scale(1.06);
+}
+.video-card h3 {
+    font-size: 36px;
+}
+.video-card > a {
+    color: var(--sun);
+    font: 700 12px "Urbanist";
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 12px;
+}
+.video-card > p {
+    color: var(--muted-dark);
+    margin-top: 24px;
+}
+.compact-card {
+    box-shadow: 0 18px 50px rgba(25, 40, 44, 0.12);
+}
+.compare-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 26px;
+}
+.compare-grid .paper-card {
+    margin-bottom: 14px;
+    padding: 24px;
+}
+.compare-grid .paper-card h3 {
+    font-size: 20px;
+    margin: 8px 0;
+}
+.column-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 0 0 16px;
+}
+.vertical-scroll {
+    height: fit-content;
+}
+.tenet-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 8px;
+    padding: 38px;
+}
+.tenet-label {
+    display: inline-block;
+    color: var(--sun);
+    font: 700 13px "Urbanist";
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.tenet-card > div {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    column-gap: 14px;
+    padding: 22px 0;
+    border-top: 1px solid #2c4650;
+}
+.tenet-card > div > span {
+    grid-row: 1/3;
+    color: var(--coral);
+    font: 700 12px "Urbanist";
+}
+.tenet-card h3 {
+    font-size: 25px;
+}
+.tenet-card p {
+    color: var(--muted-dark);
+}
+.footnote {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 22px;
+}
+.dark-section .footnote {
+    color: var(--muted-dark);
+}
+.paper-card > small {
+    display: block;
+    color: var(--sun);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font: 700 10px "Urbanist";
+    margin-top: 20px;
+}
+.paper-card .outcome {
+    color: var(--cream);
+}
+.heard-strip {
+    display: grid;
+    grid-template-columns: 0.5fr 1.5fr;
+    gap: 30px;
+    background: #173640;
+    border: 1px solid #2b4b56;
+    padding: 22px 28px;
+    margin-top: 26px;
+    border-radius: 8px;
+}
+.heard-strip b {
+    color: var(--sun);
+}
+.currency-toggle {
+    display: flex;
+    width: max-content;
+    background: #e8e1d5;
+    padding: 4px;
+    border-radius: 7px;
+    margin-bottom: 18px;
+}
+.currency-toggle button {
+    border: 0;
+    background: transparent;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font: 700 13px "Urbanist";
+    cursor: pointer;
+}
+.currency-toggle .active {
+    background: var(--ink);
+    color: #fff;
+}
+.pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.price-card > span {
+    font: 700 12px "Urbanist";
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--coral);
+}
+.price {
+    font: 700 65px "Urbanist";
+    letter-spacing: -0.04em;
+    margin-top: 20px;
+}
+.price small {
+    font: 400 15px "Lato";
+    letter-spacing: 0;
+    color: var(--muted);
+}
+.price-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+.price-card li:before {
+    content: "■";
+    color: var(--teal);
+    font-size: 9px;
+    margin-right: 10px;
+}
+.expand-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.expand-graphic {
+    display: flex;
+    align-items: end;
+    gap: 9px;
+    margin-top: 32px;
+}
+.expand-graphic i {
+    width: 35px;
+    height: 35px;
+    background: var(--coral);
+}
+.expand-graphic i:nth-of-type(2) {
+    background: var(--sun);
+}
+.expand-graphic i:nth-of-type(3) {
+    background: var(--teal);
+    height: 70px;
+}
+.expand-graphic i:nth-of-type(4) {
+    background: var(--plum);
+    height: 52px;
+}
+.expand-graphic i:nth-of-type(5) {
+    background: var(--ember);
+    height: 88px;
+}
+.investors {
+    padding-bottom: 0;
+}
+.investor-block {
+    padding: 70px 0;
+    border-top: 1px solid #29434e;
+}
+.investor-title {
+    display: flex;
+    align-items: baseline;
+    gap: 18px;
+    margin-bottom: 32px;
+}
+.investor-title > span {
+    width: 10px;
+    height: 10px;
+    background: var(--coral);
+}
+.investor-title h3 {
+    font-size: 38px;
+}
+.investor-title p {
+    font-size: 22px;
+    color: var(--sun);
+    margin-left: auto;
+}
+.traction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.big-stat {
+    background: var(--ink-2);
+    border-radius: 8px;
+    padding: 28px;
+}
+.big-stat b {
+    display: block;
+    font: 700 70px "Urbanist";
+    line-height: 1;
+    color: var(--sun);
+}
+.big-stat span {
+    display: block;
+    margin-top: 15px;
+    color: var(--muted-dark);
+}
+.traction h4 {
+    font: 700 14px "Urbanist";
+    text-transform: uppercase;
+    letter-spacing: 0.13em;
+    color: var(--sun);
+    margin: 20px 0 10px;
+}
+.square-list {
+    list-style: none;
+    padding: 0;
+}
+.square-list li:before {
+    content: "■";
+    color: var(--coral);
+    font-size: 9px;
+    margin-right: 11px;
+}
+.market-layout {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 40px;
+}
+.market-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.market-card {
+    background: var(--ink-2);
+    border: 1px solid #27424d;
+    border-radius: 8px;
+    padding: 25px;
+    position: relative;
+}
+.market-card > span {
+    display: block;
+    color: var(--muted-dark);
+    font: 700 11px "Urbanist";
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+.market-card > b {
+    font: 700 31px "Urbanist";
+    display: block;
+    margin: 10px 0;
+}
+.market-card p {
+    font-size: 13px;
+    color: var(--muted-dark);
+}
+.bar-chart {
+    height: 280px;
+    display: flex;
+    align-items: end;
+    gap: 28px;
+    border-bottom: 1px solid #49606a;
+    padding: 20px;
+}
+.bar-chart > div {
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+}
+.bar-chart span {
+    display: block;
+    background: var(--coral);
+    min-height: 30px;
+    border-radius: 4px 4px 0 0;
+    animation: bar 1s ease both;
+}
+.bar-chart div:nth-child(2) span {
+    background: var(--sun);
+}
+.bar-chart b,
+.bar-chart small {
+    font-size: 12px;
+}
+@keyframes bar {
+    from {
+        height: 0;
+    }
+}
+.model-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 16px;
+}
+.model-row > div {
+    padding: 26px;
+    background: var(--ink-2);
+    border-radius: 8px;
+}
+.model-row b,
+.model-row span {
+    display: block;
+}
+.model-row b {
+    font: 700 33px "Urbanist";
+    color: var(--sun);
+}
+.model-row span {
+    font-size: 13px;
+    color: var(--muted-dark);
+}
+.gtm-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    align-items: start;
+}
+.stair-1 {
+    margin-top: 30px;
+}
+.stair-2 {
+    margin-top: 60px;
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+.team-member {
+    display: flex;
+    gap: 20px;
+    background: var(--ink-2);
+    padding: 28px;
+    border-radius: 8px;
+}
+.avatar {
+    flex: 0 0 64px;
+    height: 64px;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font: 700 20px "Urbanist";
+    border-radius: 5px;
+}
+.team-member h3 {
+    font-size: 26px;
+}
+.team-member b {
+    color: var(--sun);
+    font-size: 13px;
+}
+.team-member p {
+    color: var(--muted-dark);
+    font-size: 15px;
+    margin-top: 8px;
+}
+.key-hires {
+    color: var(--muted-dark);
+    margin-top: 20px;
+}
+.ask-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+.donut {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    text-align: center;
+    background: conic-gradient(var(--coral) 0 60%, var(--sun) 60% 85%, var(--teal) 85%);
+    position: relative;
+}
+.donut:before {
+    content: "";
+    position: absolute;
+    inset: 36px;
+    background: var(--ink);
+    border-radius: 50%;
+}
+.donut b,
+.donut span {
+    position: relative;
+    z-index: 1;
+}
+.donut b {
+    font: 700 33px "Urbanist";
+}
+.donut span {
+    color: var(--muted-dark);
+}
+.donut-wrap ul {
+    list-style: none;
+    padding: 0;
+}
+.donut-wrap li {
+    font-size: 14px;
+    margin: 8px 0;
+}
+.donut-wrap li i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 8px;
+}
+.ask-grid ol {
+    padding-left: 20px;
+}
+.ask-grid li {
+    padding: 8px;
+}
+.runway {
+    display: inline-block;
+    color: var(--sun);
+    margin-top: 18px;
+}
+.investor-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 55px 0 120px;
+}
+.investor-cta h3 {
+    font-size: 36px;
+}
+.investor-cta p {
+    color: var(--muted-dark);
+}
+.investor-cta > div:last-child {
+    display: flex;
+    gap: 12px;
+}
+.accordion {
+    border-top: 1px solid #cfc7b9;
+}
+.faq-item {
+    border-bottom: 1px solid #cfc7b9;
+}
+.faq-item h3 {
+    margin: 0;
+}
+.faq-item button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 24px 0;
+    text-align: left;
+    font: 700 21px "Urbanist";
+    cursor: pointer;
+    color: var(--ink);
+}
+.faq-item button i {
+    font-style: normal;
+    font-size: 28px;
+    color: var(--coral);
+}
+.answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s;
+}
+.answer p {
+    overflow: hidden;
+    color: var(--muted);
+    margin: 0;
+}
+.answer.open {
+    grid-template-rows: 1fr;
+}
+.answer.open p {
+    padding-bottom: 24px;
+}
+.beta {
+    padding-bottom: 80px;
+}
+.beta-grid {
+    display: grid;
+    grid-template-columns: 0.65fr 1.35fr;
+    gap: 70px;
+}
+.beta-copy > p {
+    font-size: 22px;
+    color: var(--muted-dark);
+    margin-bottom: 25px;
+}
+.beta-copy > a {
+    display: block;
+    color: var(--cream);
+    margin: 8px 0;
+}
+.beta-copy .block-piece {
+    margin-top: 70px;
+}
+.beta-form {
+    background: var(--paper);
+    color: var(--ink);
+    padding: 38px;
+    border-radius: 8px;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.field {
+    display: block;
+    margin-bottom: 16px;
+}
+.field > span,
+fieldset legend {
+    display: block;
+    font-weight: 700;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    border: 1px solid #c9c2b5;
+    border-radius: 6px;
+    background: #fff;
+    padding: 11px 12px;
+    color: var(--ink);
+}
+.field textarea {
+    resize: vertical;
+}
+.error {
+    display: block;
+    color: #b32f45;
+    font-style: normal;
+    font-size: 12px;
+    margin-top: 4px;
+}
+.beta-form fieldset {
+    border: 0;
+    padding: 0;
+    margin: 4px 0 18px;
+}
+.chips,
+.radio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.chips input,
+.radio-grid input {
+    position: absolute;
+    opacity: 0;
+}
+.chips span,
+.radio-grid span {
+    display: block;
+    border: 1px solid #c9c2b5;
+    border-radius: 99px;
+    padding: 7px 12px;
+    font-size: 13px;
+    cursor: pointer;
+}
+.chips input:checked + span,
+.radio-grid input:checked + span {
+    background: var(--ink);
+    color: #fff;
+    border-color: var(--ink);
+}
+.chips input:focus-visible + span,
+.radio-grid input:focus-visible + span {
+    outline: 3px solid var(--coral);
+    outline-offset: 2px;
+}
+.consent {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+}
+.consent input {
+    margin-top: 5px;
+}
+.submit {
+    width: 100%;
+    margin-top: 18px;
+}
+.form-note {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 10px;
+}
+.success span {
+    font: 700 11px "Urbanist";
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+}
+.success h3 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+.success pre {
+    white-space: pre-wrap;
+    background: #eeeae0;
+    padding: 18px;
+    border-radius: 5px;
+    font: 13px/1.5 "Lato";
+    margin: 20px 0;
+}
+.success > a {
+    display: block;
+    color: var(--ink);
+    font-size: 13px;
+    margin-top: 8px;
+}
+.footer {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0 125px;
+    border-top: 1px solid #29434e;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 0.6fr;
+    gap: 40px;
+    position: relative;
+    z-index: 2;
+}
+.footer .logo {
+    width: max-content;
+    color: var(--cream);
+}
+.footer p {
+    color: var(--muted-dark);
+    margin: 12px 0;
+}
+.footer small {
+    color: var(--muted-dark);
+}
+.footer-grid > div > a {
+    display: block;
+    color: #c7d3d7;
+    margin: 6px 0;
+}
+.copyright {
+    grid-column: 1/-1;
+    color: var(--muted-dark);
+    font-size: 13px;
+}
+.footer .skyline {
+    height: 80px;
+    bottom: -38px;
+}
+.mobile-sticky {
+    display: none;
+}
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+        opacity 0.6s,
+        transform 0.6s;
+}
+.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+@media (max-width: 900px) {
+    .nav-links,
+    .nav-cta {
+        display: none;
+    }
+    .menu-button {
+        display: flex;
+        margin-left: auto;
+        width: 42px;
+        height: 42px;
+        border: 0;
+        background: transparent;
+        flex-direction: column;
+        justify-content: center;
+        gap: 7px;
+    }
+    .menu-button span {
+        width: 24px;
+        border-top: 2px solid #fff;
+    }
+    .mobile-menu {
+        display: flex;
+        position: fixed;
+        inset: 72px 0 0;
+        background: var(--ink);
+        padding: 45px 24px;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .mobile-menu > a:not(.button) {
+        font: 700 30px "Urbanist";
+    }
+    .hero-grid,
+    .stepper-layout,
+    .demo-grid,
+    .compare-grid,
+    .traction,
+    .market-layout,
+    .ask-grid,
+    .beta-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero {
+        padding-top: 140px;
+    }
+    .hero-visual {
+        max-width: 650px;
+    }
+    .three-grid,
+    .gtm-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .stepper-layout {
+        gap: 35px;
+    }
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+    .beta-copy .block-piece {
+        display: none;
+    }
+}
+@media (max-width: 600px) {
+    .container {
+        width: min(100% - 32px, 1200px);
+    }
+    .section {
+        padding: 82px 0;
+    }
+    .section-header {
+        margin-bottom: 36px;
+    }
+    .section-header h2 {
+        font-size: 40px;
+    }
+    .corner-blocks {
+        display: none;
+    }
+    .nav {
+        height: 64px;
+    }
+    .mobile-menu {
+        top: 64px;
+    }
+    .hero {
+        padding: 116px 0 100px;
+        min-height: auto;
+    }
+    .hero-grid {
+        gap: 60px;
+    }
+    .hero h1 {
+        font-size: 46px;
+    }
+    .hero-sub {
+        font-size: 18px;
+    }
+    .hero-actions {
+        flex-direction: column;
+    }
+    .hero-actions .button {
+        width: 100%;
+    }
+    .hero .skyline {
+        opacity: 0.55;
+    }
+    .fall.two {
+        display: none;
+    }
+    .decision-card {
+        padding: 20px;
+    }
+    .decision-card h3 {
+        font-size: 22px;
+    }
+    .people {
+        grid-template-columns: 1fr;
+    }
+    .fall.one {
+        right: -25px;
+    }
+    .three-grid,
+    .market-grid,
+    .stats,
+    .model-row,
+    .gtm-grid,
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .paper-card {
+        padding: 26px;
+    }
+    .insight {
+        padding: 75px 0;
+    }
+    .insight h2 {
+        font-size: 50px;
+    }
+    .insight p {
+        font-size: 18px;
+    }
+    .stepper-layout {
+        display: block;
+    }
+    .steps {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        margin-bottom: 25px;
+    }
+    .steps button {
+        display: block;
+        padding: 4px;
+        border: 0;
+    }
+    .steps button > span:last-child small {
+        display: none;
+    }
+    .steps button b {
+        font-size: 13px;
+        margin-top: 6px;
+    }
+    .steps button.active {
+        transform: translateY(-5px);
+    }
+    .step-panel .decision-card {
+        min-height: auto;
+    }
+    .demo-grid {
+        gap: 24px;
+    }
+    .video-card {
+        min-height: 420px;
+    }
+    .heard-strip {
+        grid-template-columns: 1fr;
+    }
+    .price {
+        font-size: 52px;
+    }
+    .investor-title {
+        display: grid;
+        grid-template-columns: 10px 1fr;
+    }
+    .investor-title p {
+        grid-column: 1/-1;
+        margin: 0;
+    }
+    .investor-block {
+        padding: 55px 0;
+    }
+    .market-layout {
+        display: block;
+    }
+    .bar-chart {
+        margin-top: 25px;
+    }
+    .team-member {
+        display: block;
+    }
+    .avatar {
+        margin-bottom: 18px;
+    }
+    .donut-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .donut {
+        width: 190px;
+        height: 190px;
+    }
+    .investor-cta {
+        display: block;
+        padding-bottom: 90px;
+    }
+    .investor-cta > div:last-child {
+        flex-direction: column;
+        margin-top: 25px;
+    }
+    .stair-1,
+    .stair-2 {
+        margin-top: 0;
+    }
+    .faq-item button {
+        font-size: 18px;
+    }
+    .beta-form {
+        padding: 23px;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer {
+        padding-bottom: 120px;
+    }
+    .footer .skyline {
+        opacity: 0.55;
+    }
+    .mobile-sticky {
+        position: fixed;
+        z-index: 45;
+        display: block;
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        background: var(--coral);
+        color: var(--ink);
+        text-align: center;
+        padding: 13px;
+        border-radius: 7px;
+        text-decoration: none;
+        font: 700 15px "Urbanist";
+        transform: translateY(100px);
+        transition: transform 0.3s;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+    .hero-passed .mobile-sticky {
+        transform: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *:before,
+    *:after {
+        animation: none !important;
+        transition: none !important;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "title": "Tenet: Shared AI memory and decision records for teams",
+  "description": "Shared AI memory and decision records for teams, so work converges in fewer iterations.",
+  "language": "en",
+  "icons": {
+    "icon": "/favicon.svg"
+  },
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
